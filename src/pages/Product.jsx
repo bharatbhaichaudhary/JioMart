@@ -7,7 +7,7 @@ const Product = () => {
 
   const naviget = useNavigate();
 
-  console.log(productData);
+  console.log(1,productData);
 
   const product = useParams();
   console.log(product);
@@ -18,8 +18,10 @@ const Product = () => {
         `https://dummyjson.com/products/${product.id}`
       );
       setProductData(proData.data);
+      console.log(2,proData);
+      
     } catch (error) {
-      console.log(2, error);
+      console.log(2, error); 
     }
   };
   useEffect(() => {
@@ -27,11 +29,12 @@ const Product = () => {
 
     pro();
   }, []);
+  if(!productData) return <>Loading......</>
   return (
     <div className="bg-green-200 h-[100vh] pt-10 ">
       <div className="flex flex-col md:flex-row items-start gap-6 p-4 bg-cyan-900 rounded-2xl shadow-md max-w-3xl mx-auto ">
         <img
-          src={productData.thumbnail}
+          src={productData?.thumbnail}
           alt={productData.title}
           className="w-40 h-40 object-contain rounded-lg border bg-amber-200"
         />
